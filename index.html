@@ -3,83 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Information</title>
+    <title>Enter Social Media IDs</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             background-color: #f4f4f4;
         }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 0;
+        h1 {
             text-align: center;
         }
-        .container {
-            padding: 20px;
-        }
-        .info {
-            margin-bottom: 20px;
-        }
-        .api-list {
-            list-style: none;
-            padding: 0;
-        }
-        .api-item {
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
             background-color: #fff;
+            padding: 20px;
             border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-container label {
+            display: block;
             margin-bottom: 10px;
-            padding: 10px;
         }
-        .api-item h3 {
-            margin: 0 0 10px 0;
+        .form-container input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
         }
-        .api-item p {
-            margin: 5px 0;
-        }
-        .button {
-            display: inline-block;
+        .form-container button {
             padding: 10px 20px;
             background-color: #007bff;
             color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+            display: block;
+            margin: 0 auto;
         }
-        .button:hover {
+        .form-container button:hover {
             background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>API Information</h1>
-    </header>
-    <div class="container">
-        <div class="info">
-            <h2>About This Page</h2>
-            <p>Welcome to the API Information page. Here you will find details about all the APIs available, including their names, numbers, and usage instructions. Click on the "All APIs" button to see the complete list of available APIs.</p>
-        </div>
-        <a href="#api-section" class="button">All APIs</a>
-        <div id="api-section" class="info">
-            <h2>List of APIs</h2>
-            <ul class="api-list">
-                <li class="api-item">
-                    <h3>API 1: Video API</h3>
-                    <p><strong>Number:</strong> 001</p>
-                    <p><strong>Usage:</strong> This API returns random video URLs.</p>
-                    <p><strong>Endpoint:</strong> <code>https://hot-videos.onrender.com/video</code></p>
-                </li>
-                <li class="api-item">
-                    <h3>API 2: Example API</h3>
-                    <p><strong>Number:</strong> 002</p>
-                    <p><strong>Usage:</strong> This API provides example data for testing.</p>
-                    <p><strong>Endpoint:</strong> <code>https://example.com/api</code></p>
-                </li>
-                <!-- Add more APIs here -->
-            </ul>
-        </div>
+    <h1>Enter Your Social Media IDs</h1>
+
+    <div class="form-container">
+        <label for="fb-id">Facebook ID:</label>
+        <input type="text" id="fb-id" placeholder="Enter your Facebook ID">
+
+        <label for="insta-id">Instagram ID:</label>
+        <input type="text" id="insta-id" placeholder="Enter your Instagram ID">
+
+        <label for="tiktok-id">TikTok ID:</label>
+        <input type="text" id="tiktok-id" placeholder="Enter your TikTok ID">
+
+        <button onclick="saveAndNavigate()">Proceed to API Testing</button>
     </div>
+
+    <script>
+        function saveAndNavigate() {
+            // Get the entered IDs
+            const fbId = document.getElementById('fb-id').value.trim();
+            const instaId = document.getElementById('insta-id').value.trim();
+            const tiktokId = document.getElementById('tiktok-id').value.trim();
+
+            // Save IDs to session storage (you can use local storage if needed)
+            sessionStorage.setItem('fbId', fbId);
+            sessionStorage.setItem('instaId', instaId);
+            sessionStorage.setItem('tiktokId', tiktokId);
+
+            // Redirect to the API testing page
+            window.location.href = '/apis.html';
+        }
+    </script>
+
 </body>
 </html>
