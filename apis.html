@@ -4,19 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test APIs</title>
-    <script>
-        function testVideoApi() {
-            fetch('/api/video')
-                .then(response => response.json())
-                .then(data => console.log(data))
-                .catch(error => console.error('Error:', error));
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
         }
-        // Similar functions for other APIs
-    </script>
+        h1 {
+            text-align: center;
+        }
+        .api {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+        .api h2 {
+            margin-top: 0;
+        }
+        .api p {
+            margin-bottom: 5px;
+        }
+        .api code {
+            background-color: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .api button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+            margin-top: 10px;
+        }
+        .api button:hover {
+            background-color: #0056b3;
+        }
+        .response {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            white-space: pre-wrap;
+        }
+    </style>
 </head>
 <body>
     <h1>Test APIs</h1>
-    <button onclick="testVideoApi()">Test Video API</button>
-    <!-- Add more buttons for other APIs -->
+
+    <!-- Example API section -->
+    <div class="api" id="video-api">
+        <h2>Video API</h2>
+        <p>This API provides random video URLs.</p>
+        <p>Endpoint: <code>/api/video</code></p>
+        <button onclick="testVideoApi()">Try Video API</button>
+        <div class="response" id="video-response"></div>
+    </div>
+
+    <!-- Example API section -->
+    <div class="api" id="tiktok-api">
+        <h2>TikTok API</h2>
+        <p>This API provides information about a TikTok user.</p>
+        <p>Endpoint: <code>/api/tiktok/info</code></p>
+        <button onclick="testTikTokApi()">Try TikTok API</button>
+        <div class="response" id="tiktok-response"></div>
+    </div>
+
+    <!-- Add more API sections as needed -->
+
+    <script>
+        // Function to make GET requests to the server and display responses
+        async function fetchAndDisplay(url, responseElementId) {
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                document.getElementById(responseElementId).textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById(responseElementId).textContent = `Error: ${error.message}`;
+            }
+        }
+
+        // Example function to test the Video API
+        function testVideoApi() {
+            fetchAndDisplay('/api/video', 'video-response');
+        }
+
+        // Example function to test the TikTok API
+        function testTikTokApi() {
+            fetchAndDisplay('/api/tiktok/info', 'tiktok-response');
+        }
+
+        // Add more functions for additional APIs as needed
+    </script>
+
 </body>
 </html>
