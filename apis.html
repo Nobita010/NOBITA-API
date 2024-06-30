@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test APIs</title>
+    <script>
+        function testVideoApi() {
+            fetch('/api/video')
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error('Error:', error));
+        }
+        // Similar functions for other APIs
+    </script>
+</head>
+<body>
+    <h1>Test APIs</h1>
+    <button onclick="testVideoApi()">Test Video API</button>
+    <!-- Add more buttons for other APIs -->
+</body>
+</html>
